@@ -5,7 +5,7 @@ import { ResultScreen } from './pages/ResultScreen';
 
 function App() {
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <BrowserRouter basename="/pixel-game">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/game" element={<QuizScreen />} />
