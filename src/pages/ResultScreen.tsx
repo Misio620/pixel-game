@@ -29,6 +29,12 @@ export const ResultScreen: React.FC = () => {
             submittedRef.current = true;
 
             setSubmitting(true);
+
+            // Set a timeout to ensure submitting doesn't get stuck
+            const timeout = setTimeout(() => {
+                setSubmitting(false);
+            }, 3000);
+
             try {
                 await api.submitResult({
                     userId,
@@ -38,18 +44,21 @@ export const ResultScreen: React.FC = () => {
                     timestamp: new Date().toISOString()
                 });
 
+                clearTimeout(timeout);
+
                 // Mark as submitted in history state to prevent refresh-resubmit
                 navigate(location.pathname, {
                     replace: true,
                     state: { ...state, submitted: true }
                 });
             } catch (err) {
-                console.error(err);
+                console.error('Failed to submit score:', err);
+                clearTimeout(timeout);
             } finally {
                 setSubmitting(false);
             }
         };
-        if (state) submit();
+        if (state && state.score !== undefined) submit();
     }, [state, userId, score, total, passed, isAlreadySubmitted, navigate]);
 
     return (
