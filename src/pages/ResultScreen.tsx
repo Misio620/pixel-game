@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const PASS_THRESHOLD = Number(import.meta.env.VITE_PASS_THRESHOLD) || 5;
 
 export const ResultScreen: React.FC = () => {
-    const { state } = useLocation();
+    const { state, pathname } = useLocation();
     const navigate = useNavigate();
     const [submitting, setSubmitting] = useState(false);
     const [showReview, setShowReview] = useState(false);
@@ -47,7 +47,7 @@ export const ResultScreen: React.FC = () => {
                 clearTimeout(timeout);
 
                 // Mark as submitted in history state to prevent refresh-resubmit
-                navigate(location.pathname, {
+                navigate(pathname, {
                     replace: true,
                     state: { ...state, submitted: true }
                 });
