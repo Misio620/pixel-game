@@ -104,10 +104,10 @@ export const ResultScreen: React.FC = () => {
                                     REVIEW ANSWERS
                                 </PixelButton>
                                 <div className="flex gap-2">
-                                    <PixelButton onClick={() => navigate('/game')} variant="primary" className="flex-1">
+                                    <PixelButton onClick={() => navigate('/game', { state: { fromHome: true } })} variant="primary" className="flex-1">
                                         RETRY
                                     </PixelButton>
-                                    <PixelButton onClick={() => navigate('/')} variant="outline" className="flex-1">
+                                    <PixelButton onClick={() => navigate('/', { replace: true })} variant="outline" className="flex-1">
                                         MENU
                                     </PixelButton>
                                 </div>
