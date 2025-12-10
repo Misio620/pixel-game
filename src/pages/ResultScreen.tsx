@@ -23,13 +23,6 @@ export const ResultScreen: React.FC = () => {
 
     const submittedRef = React.useRef(false);
 
-    // Redirect to home if no state provided
-    useEffect(() => {
-        if (!state || state.score === undefined) {
-            navigate('/', { replace: true });
-        }
-    }, [state, navigate]);
-
     useEffect(() => {
         const submit = async () => {
             if (submittedRef.current || isAlreadySubmitted) return;
@@ -58,11 +51,6 @@ export const ResultScreen: React.FC = () => {
         };
         if (state) submit();
     }, [state, userId, score, total, passed, isAlreadySubmitted, navigate]);
-
-    // Don't render if no valid state
-    if (!state || state.score === undefined) {
-        return null;
-    }
 
     return (
         <div className="min-h-screen flex items-center justify-center p-4">
