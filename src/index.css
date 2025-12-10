@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --pixel-bg: #202020;
+  --pixel-text: #f0f0f0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Press Start 2P', 'DotGothic16', cursive;
+  background-color: var(--pixel-bg);
+  color: var(--pixel-text);
+  -webkit-font-smoothing: none;
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f0f0f0;
+  border: 2px solid #000;
+}
+
+/* Pixel Art Utilities */
+.pixel-border {
+  box-shadow:
+    -4px 0 0 0 white,
+    4px 0 0 0 white,
+    0 -4px 0 0 white,
+    0 4px 0 0 white;
+  margin: 4px;
+}
+
+.pixel-border-sm {
+  box-shadow:
+    -2px 0 0 0 white,
+    2px 0 0 0 white,
+    0 -2px 0 0 white,
+    0 2px 0 0 white;
+  margin: 2px;
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 0px #000;
+}
+
+.image-pixelated {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
